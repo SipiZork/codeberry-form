@@ -4,6 +4,17 @@ import './index.css';
 
 
 class Form extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      name: 'Jane Doe'
+    }
+  }
+
+  onChange = (e) => {
+    this.setState({ name: e.target.value });
+  }
+
   render() {
     return(
       <React.Fragment>
@@ -13,12 +24,13 @@ class Form extends React.Component {
               <h1>Form</h1>
               <label>
                 Name:
-                <input type="text" name="name" />
+                <input type="text" name="name" onChange={this.onChange}/>
                 </label>
             </form>
           </div>
           <div className="form-output">
             <h1>Output</h1>
+            <strong>Name:</strong> {this.state.name}
           </div>
         </div>
       </React.Fragment>
