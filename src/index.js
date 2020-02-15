@@ -7,18 +7,30 @@ class Form extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      name: ''
+      fName: '',
+      lName: '',
+      email: '',
+      password: ''
     }
   }
 
   changeHandler = (e) => {
-    this.setState({ name: e.target.value });
+    let inputName = e.target.name;
+    let inputVal = e.target.value;
+    this.setState({
+      [inputName]: inputVal
+    });
   }
 
   submitHandler = (e) => {
     e.preventDefault();
-    alert('We are submitting! (' + this.state.name + ')');
-    this.setState({ name: ''});
+    alert('We are submitting!');
+    this.setState({
+      fName: '',
+      lName: '',
+      email: '',
+      password: '',
+    });
   }
 
   render() {
@@ -29,15 +41,41 @@ class Form extends React.Component {
             <form onSubmit={this.submitHandler}>
               <h1>Form</h1>
               <label>
-                Name:
-                <input type="text" name="name" placeholder="Type here your name" value={this.state.name} onChange={this.changeHandler}/>
-                </label>
-                <input type="submit" value="Press me" />
+                First Name:
+                <input type="text" name="fName" placeholder="Type here your first name" value={this.state.fName} onChange={this.changeHandler}/>
+              </label>
+              <br />
+              <label>
+                Last Name:
+                <input type="text" name="lName" placeholder="Type here your last name" value={this.state.lName} onChange={this.changeHandler}/>
+              </label>
+              <br />
+              <label>
+                Email:
+                <input type="text" name="email" placeholder="Type here your email address" value={this.state.email} onChange={this.changeHandler}/>
+              </label>
+              <br />
+              <label>
+                Password:
+                <input type="text" name="password" placeholder="Type here your password" value={this.state.password} onChange={this.changeHandler}/>
+              </label>
+              <input type="submit" value="Press me" />
             </form>
           </div>
           <div className="form-output">
             <h1>Output</h1>
-            <strong>Name:</strong> {this.state.name}
+            <p>
+              <strong>First Name:</strong> {this.state.fName}
+            </p>
+            <p>
+              <strong>Last Name:</strong> {this.state.lName}
+            </p>
+            <p>
+              <strong>Email:</strong> {this.state.email}
+            </p>
+            <p>
+              <strong>Password:</strong> {this.state.password}
+            </p>
           </div>
         </div>
       </React.Fragment>
