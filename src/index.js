@@ -7,7 +7,7 @@ class Form extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      name: 'Jane Doe'
+      name: ''
     }
   }
 
@@ -18,6 +18,7 @@ class Form extends React.Component {
   submitHandler = (e) => {
     e.preventDefault();
     alert('We are submitting! (' + this.state.name + ')');
+    this.setState({ name: ''});
   }
 
   render() {
@@ -29,7 +30,7 @@ class Form extends React.Component {
               <h1>Form</h1>
               <label>
                 Name:
-                <input type="text" name="name" onChange={this.changeHandler}/>
+                <input type="text" name="name" placeholder="Type here your name" value={this.state.name} onChange={this.changeHandler}/>
                 </label>
                 <input type="submit" value="Press me" />
             </form>
