@@ -11,8 +11,13 @@ class Form extends React.Component {
     }
   }
 
-  onChange = (e) => {
+  changeHandler = (e) => {
     this.setState({ name: e.target.value });
+  }
+
+  submitHandler = (e) => {
+    e.preventDefault();
+    alert('We are submitting! (' + this.state.name + ')');
   }
 
   render() {
@@ -20,12 +25,13 @@ class Form extends React.Component {
       <React.Fragment>
         <div className="container">
           <div className="form-input">
-            <form>
+            <form onSubmit={this.submitHandler}>
               <h1>Form</h1>
               <label>
                 Name:
-                <input type="text" name="name" onChange={this.onChange}/>
+                <input type="text" name="name" onChange={this.changeHandler}/>
                 </label>
+                <input type="submit" value="Press me" />
             </form>
           </div>
           <div className="form-output">
