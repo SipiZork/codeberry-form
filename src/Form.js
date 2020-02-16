@@ -1,10 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class Form extends React.Component {
-  constructor(props){
-    super(props);
-  }
+  
   changeHandler = (e) => {
     let name = e.target.name;
     let value = e.target.value;
